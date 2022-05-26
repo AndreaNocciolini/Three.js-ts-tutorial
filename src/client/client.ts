@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import  { GUI } from 'dat.gui';
+// import  Stats from 'three/examples/jsm/libs/stats.module';
 
 const scene = new THREE.Scene()
 // scene.background = new THREE.Color(0x448800)
@@ -57,8 +59,8 @@ const material = new THREE.ShaderMaterial({
     wireframe: true
 });
 
-const cube = new THREE.Mesh(geometry, material)
-scene.add(cube)
+const sphere = new THREE.Mesh(geometry, material)
+scene.add(sphere)
 
 window.addEventListener('resize', onWindowResize, false)
 function onWindowResize() {
@@ -68,11 +70,21 @@ function onWindowResize() {
     render()
 }
 
+
+const gui = new GUI()
+const sphereFolder = gui.addFolder('Sphere')
+sphereFolder.add(sphere.rotation, 'x', 0, Math.PI * 2)
+sphereFolder.add(sphere.rotation, 'y', 0, Math.PI * 2)
+sphereFolder.add(sphere.rotation, 'z', 0, Math.PI * 2)
+
+const cameraFolder = gui.addFolder('Camera')
+cameraFolder.add(camera.position, 'z', 0, 20)
+
 function animate() {
     requestAnimationFrame(animate)
 
-    // cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
+    // sphere.rotation.x += 0.01
+    sphere.rotation.y += 0.005
 
     render()
 }
