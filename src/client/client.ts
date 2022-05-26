@@ -73,9 +73,20 @@ function onWindowResize() {
 
 const gui = new GUI()
 const sphereFolder = gui.addFolder('Sphere')
-sphereFolder.add(sphere.rotation, 'x', 0, Math.PI * 2)
-sphereFolder.add(sphere.rotation, 'y', 0, Math.PI * 2)
-sphereFolder.add(sphere.rotation, 'z', 0, Math.PI * 2)
+const sphereRotationFolder = sphereFolder.addFolder('Rotation')
+sphereRotationFolder.add(sphere.rotation, 'x', 0, Math.PI * 2)
+sphereRotationFolder.add(sphere.rotation, 'y', 0, Math.PI * 2)
+sphereRotationFolder.add(sphere.rotation, 'z', 0, Math.PI * 2)
+
+const spherePositionFolder = sphereFolder.addFolder('Position')
+spherePositionFolder.add(sphere.position, 'x', -10, 10)
+spherePositionFolder.add(sphere.position, 'y', -10, 10)
+spherePositionFolder.add(sphere.position, 'z', -10, 10)
+
+const sphereScaleFolder = sphereFolder.addFolder('Scale')
+sphereScaleFolder.add(sphere.scale, 'x', 0, 5)
+sphereScaleFolder.add(sphere.scale, 'y', 0, 5)
+sphereScaleFolder.add(sphere.scale, 'z', 0, 5)
 
 const cameraFolder = gui.addFolder('Camera')
 cameraFolder.add(camera.position, 'z', 0, 20)
